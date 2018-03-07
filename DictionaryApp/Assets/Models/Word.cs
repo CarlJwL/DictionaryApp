@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace DictionaryApp.Assets.Models
 {
-    class Word
+    public class Word
     {
-        String Name { get; set; }
-        String Explantion { get; set; }
-        public Word(String name,String explantion)
-        {
-            this.Name = name;
-            this.Explantion = explantion;
-        }
+        public String Name { get; set; }
+        public String Explanation { get; set; }
+        
     }
 }

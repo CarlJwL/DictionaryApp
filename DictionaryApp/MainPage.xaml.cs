@@ -12,7 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using DictionaryApp.Assets.Models;
+using System.Collections.ObjectModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -23,15 +24,27 @@ namespace DictionaryApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        
+        public ObservableCollection<Word> words;
+
         public MainPage()
         {
             this.InitializeComponent();
+            words = new ObservableCollection<Word>
+            {
+                new Word { Name = "ROLL", Explanation = "滚动" }
+            };
         }
-
+        
         private void HamburgerMenuButton_Click(object sender, RoutedEventArgs e)
         {
             MenuSplitView.IsPaneOpen = !MenuSplitView.IsPaneOpen;
         }
+
+        private void AddWordButton_Click(object sender, RoutedEventArgs e)
+        {
+            words.Add(new Word { Name =(String) AddWordTextBox.Text, Explanation = (String)AddExplantionTextBox.Text });
+        }
+
+        
     }
 }
