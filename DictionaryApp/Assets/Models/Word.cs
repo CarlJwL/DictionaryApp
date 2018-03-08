@@ -10,6 +10,6 @@ namespace DictionaryApp.Assets.Models
     {
         public String Name { get; set; }
         public String Explanation { get; set; }
-        
+        public String Language { get; set; }
     }
 }

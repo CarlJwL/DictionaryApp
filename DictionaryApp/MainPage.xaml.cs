@@ -42,9 +42,24 @@ namespace DictionaryApp
 
         private void AddWordButton_Click(object sender, RoutedEventArgs e)
         {
-            words.Add(new Word { Name =(String) AddWordTextBox.Text, Explanation = (String)AddExplantionTextBox.Text });
+            String selectedLanguage;
+            if (LanguageCheckBox.IsSelectionBoxHighlighted)
+                selectedLanguage = LanguageCheckBox.SelectionBoxItem.ToString();
+            else
+                selectedLanguage = "日语";
+            words.Add(new Word { Name =(String) AddWordTextBox.Text, Explanation = (String)AddExplantionTextBox.Text, Language=selectedLanguage });
         }
-
         
+
+        private void MenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            String selectedItemName = MenuListBox.SelectedItem.ToString();
+            switch (selectedItemName)
+            {
+                case "HomeBoxItem":
+                    
+                    break;
+            }
+        }
     }
 }
