@@ -99,6 +99,12 @@
     <Compile Include="Assets\Pages\AppSettingPage.xaml.cs">
       <DependentUpon>AppSettingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Assets\Pages\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\Pages\ReciteWordPage.xaml.cs">
+      <DependentUpon>ReciteWordPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -126,6 +132,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Assets\Pages\AppSettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Pages\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Pages\ReciteWordPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

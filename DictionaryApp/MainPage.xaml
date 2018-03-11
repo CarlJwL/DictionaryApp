@@ -39,59 +39,25 @@
                             <TextBlock Text="Home" />
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem Name="JapaneseBoxItem">
+                    <ListBoxItem Name="ReciteBoxItem">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE985;" Width="35"/>
-                            <TextBlock Text="Japanese" />
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem Name="EnglishBoxItem">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE983;" Width="35"/>
-                            <TextBlock Text="English"/>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE15A;" Width="35"/>
+                            <TextBlock Text="Recite Word" />
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="SettingBoxItem">
                         <StackPanel Orientation="Horizontal" >
                             <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xEE57;" Width="35"/>
                             <TextBlock Text="Setting"/>
-                        </StackPanel>                      
+                        </StackPanel>
                     </ListBoxItem>
                 </ListBox>
             </SplitView.Pane>
             <SplitView.Content>
-                <StackPanel>
-                    <GridView ItemsSource="{x:Bind words}">
-                        <GridView.ItemTemplate>
-                            <DataTemplate x:DataType="data:Word">
-                                <StackPanel>
-                                    <TextBlock Text="{x:Bind Name}"/>
-                                    <TextBlock Text="{x:Bind Explanation}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridView.ItemTemplate>
-                    </GridView>
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="word's name" Width="120"/>
-                            <TextBox Name="AddWordTextBox"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="word's explantion" Width="120"/>
-                            <TextBox Name="AddExplantionTextBox"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="word's language" Width="120"/>
-                            <ComboBox Name="LanguageCheckBox" >
-                                <ComboBoxItem Name="JapaneseComboxItem">日语</ComboBoxItem>
-                                <ComboBoxItem Name="EnglishComboxItem">英语</ComboBoxItem>
-                            </ComboBox>
-                        </StackPanel>
-                        <Button Name="AddWordButton" Content="add word" Click="AddWordButton_Click"/>
-                    </StackPanel>
-                </StackPanel>
+                <Frame Name="SplitViewFrame">
+                    
+                </Frame>
             </SplitView.Content>
         </SplitView>
     </Grid>
-    
 </Page>

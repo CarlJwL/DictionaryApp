@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="DictionaryApp.Assets.Pages.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DictionaryApp.Assets.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:DictionaryApp.Assets.Models"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <GridView ItemsSource="{x:Bind words}">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Word">
+                        <StackPanel>
+                            <TextBlock Text="{x:Bind Name}"/>
+                            <TextBlock Text="{x:Bind Explanation}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="word's name" Width="120"/>
+                    <TextBox Name="AddWordTextBox"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="word's explantion" Width="120"/>
+                    <TextBox Name="AddExplantionTextBox"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="word's language" Width="120"/>
+                    <ComboBox Name="LanguageCheckBox" >
+                        <ComboBoxItem Name="JapaneseComboxItem">日语</ComboBoxItem>
+                        <ComboBoxItem Name="EnglishComboxItem">英语</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <Button Name="AddWordButton" Content="add word" Click="AddWordButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

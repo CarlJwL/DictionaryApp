@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using DictionaryApp.Assets.Models;
 using System.Collections.ObjectModel;
+using DictionaryApp.Assets.Pages;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -24,40 +25,34 @@ namespace DictionaryApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public ObservableCollection<Word> words;
-
         public MainPage()
         {
             this.InitializeComponent();
-            words = new ObservableCollection<Word>
-            {
-                new Word { Name = "ROLL", Explanation = "滚动" }
-            };
         }
-        
+
         private void HamburgerMenuButton_Click(object sender, RoutedEventArgs e)
         {
             MenuSplitView.IsPaneOpen = !MenuSplitView.IsPaneOpen;
         }
 
-        private void AddWordButton_Click(object sender, RoutedEventArgs e)
-        {
-            String selectedLanguage;
-            if (LanguageCheckBox.IsSelectionBoxHighlighted)
-                selectedLanguage = LanguageCheckBox.SelectionBoxItem.ToString();
-            else
-                selectedLanguage = "日语";
-            words.Add(new Word { Name =(String) AddWordTextBox.Text, Explanation = (String)AddExplantionTextBox.Text, Language=selectedLanguage });
-        }
-        
-
         private void MenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            MenuSplitView.IsPaneOpen = !MenuSplitView.IsPaneOpen;
             String selectedItemName = MenuListBox.SelectedItem.ToString();
+            
             switch (selectedItemName)
             {
                 case "HomeBoxItem":
-                    
+                    SplitViewFrame.Navigate(typeof(HomePage));
+                    break;
+                case "SettingBoxItem":
+                    SplitViewFrame.Navigate(typeof(AppSettingPage));
+                    break;
+                case "ReciteBoxItem":
+                    SplitViewFrame.Navigate(typeof(ReciteWordPage));
+                    break;
+                default:
+                    SplitViewFrame.Navigate(typeof(HomePage));
                     break;
             }
         }

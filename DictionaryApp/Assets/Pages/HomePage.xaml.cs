@@ -7,7 +7,6 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,31 +22,26 @@ namespace DictionaryApp.Assets.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AppSettingPage : Page
+    public sealed partial class HomePage : Page
     {
-       
-
-        public AppSettingPage()
+        public ObservableCollection<Word> words;
+        public HomePage()
         {
             this.InitializeComponent();
+            words = new ObservableCollection<Word>
+            {
+                new Word { Name = "ROLL", Explanation = "滚动" }
+            };
         }
-        
 
-        private void ChooseSavingPathButton_Click(object sender, RoutedEventArgs e)
+        private void AddWordButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var picker = new FileSavePicker()
-                {
-                    SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
-                    SuggestedFileName = "New Document"
-                };
-                FilePathTextBlock.Text = picker.SuggestedStartLocation.ToString();
-            }
-            finally
-            {
-                FilePathTextBlock.Opacity = 50;
-            }
+            String selectedLanguage;
+            if (LanguageCheckBox.IsSelectionBoxHighlighted)
+                selectedLanguage = LanguageCheckBox.SelectionBoxItem.ToString();
+            else
+                selectedLanguage = "日语";
+            words.Add(new Word { Name = (String)AddWordTextBox.Text, Explanation = (String)AddExplantionTextBox.Text, Language = selectedLanguage });
         }
     }
 }
