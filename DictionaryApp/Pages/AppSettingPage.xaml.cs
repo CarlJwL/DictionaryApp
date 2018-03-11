@@ -25,8 +25,6 @@ namespace DictionaryApp.Assets.Pages
     /// </summary>
     public sealed partial class AppSettingPage : Page
     {
-       
-
         public AppSettingPage()
         {
             this.InitializeComponent();
