@@ -29,9 +29,13 @@ namespace DictionaryApp.Models
                 this.OnPropertyChanged("IsSelected");
             }
         }
+        public object Arguments { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
-        public void OnPropertyChanged(string propertyName) => this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-
+        public void OnPropertyChanged(string propertyName)
+        {
+            // Raise the PropertyChanged event, passing the name of the property whose value has changed.
+            this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

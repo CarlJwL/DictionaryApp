@@ -263,6 +263,8 @@
                 Value="Center" />
         <Setter Property="UseSystemFocusVisuals"
                 Value="True" />
+        <Setter Property="FocusVisualMargin"
+                Value="0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">

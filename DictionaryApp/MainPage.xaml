@@ -76,7 +76,6 @@
             </Grid>
         </DataTemplate>
 
-        <ResourceDictionary x:Key="AppStyles" Source="ms-appx:///Styles/AppStyles.xaml" />
 
     </Page.Resources>
 

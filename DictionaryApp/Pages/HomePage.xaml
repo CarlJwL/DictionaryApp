@@ -9,6 +9,15 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Name="DataInformationPanel"
+                    Grid.Row="0"
+                    Orientation="Horizontal">
+            
+        </StackPanel>
         <StackPanel>
             <GridView ItemsSource="{x:Bind words}">
                 <GridView.ItemTemplate>

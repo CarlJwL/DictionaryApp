@@ -18,6 +18,7 @@ using DictionaryApp.Assets.Pages;
 using DictionaryApp.Models;
 using Windows.UI.Xaml.Automation;
 using Windows.UI.Core;
+using DictionaryApp.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -228,6 +229,79 @@ namespace DictionaryApp
         }
 
         public Frame AppFrame { get { return this.frame; } }
-        
+
+        private void RootSplitView_PaneClosed(SplitView sender, object args)
+        {
+            NavPaneDivider.Visibility = Visibility.Collapsed;
+        }
+
+        private void NavMenuItemContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
+        {
+            if (!args.InRecycleQueue && args.Item != null && args.Item is NavMenuItem)
+            {
+                args.ItemContainer.SetValue(AutomationProperties.NameProperty, ((NavMenuItem)args.Item).Label);
+            }
+            else
+            {
+                args.ItemContainer.ClearValue(AutomationProperties.NameProperty);
+            }
+        }
+
+        private void OnNavigatingToPage(object sender, NavigatingCancelEventArgs e)
+        {
+            if (e.NavigationMode == NavigationMode.Back)
+            {
+                var item = (from p in this.navlist where p.DestinationPage == e.SourcePageType select p).SingleOrDefault();
+                if (item == null && this.AppFrame.BackStackDepth > 0)
+                {
+                    // In cases where a page drills into sub-pages then we'll highlight the most recent
+                    // navigation menu item that appears in the BackStack
+                    foreach (var entry in this.AppFrame.BackStack.Reverse())
+                    {
+                        item = (from p in this.navlist where p.DestinationPage == entry.SourcePageType select p).SingleOrDefault();
+                        if (item != null)
+                            break;
+                    }
+                }
+
+                foreach (var i in navlist)
+                {
+                    i.IsSelected = false;
+                }
+                if (item != null)
+                {
+                    item.IsSelected = true;
+                }
+
+                var container = (ListViewItem)NavMenuList.ContainerFromItem(item);
+
+                // While updating the selection state of the item prevent it from taking keyboard focus.  If a
+                // user is invoking the back button via the keyboard causing the selected nav menu item to change
+                // then focus will remain on the back button.
+                if (container != null) container.IsTabStop = false;
+                NavMenuList.SetSelectedItem(container);
+                if (container != null) container.IsTabStop = true;
+            }
+        }
+
+        private void NavMenuList_ItemInvoked(object sender, ListViewItem listViewItem)
+        {
+            foreach (var i in navlist)
+            {
+                i.IsSelected = false;
+            }
+
+            var item = (NavMenuItem)((NavMenuListView)sender).ItemFromContainer(listViewItem);
+
+            if (item != null)
+            {
+                item.IsSelected = true;
+                if (item.DestinationPage != null &&
+                    item.DestinationPage != this.AppFrame.CurrentSourcePageType)
+                {
+                    this.AppFrame.Navigate(item.DestinationPage, item.Arguments);
+                }
+            }
+        }
     }
 }
