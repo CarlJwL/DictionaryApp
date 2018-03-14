@@ -24,6 +24,7 @@ namespace DictionaryApp.Assets.Pages
     /// </summary>
     public sealed partial class HomePage : Page
     {
+        public string currentTime => DateTime.Now.ToString("dd MMM YYYY HH:mm:ss");
         public ObservableCollection<Word> words;
         public HomePage()
         {

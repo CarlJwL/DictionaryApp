@@ -16,7 +16,7 @@
         <StackPanel Name="DataInformationPanel"
                     Grid.Row="0"
                     Orientation="Horizontal">
-            
+            <TextBlock Text="{x:Bind currentTime, Mode=OneWay}" />
         </StackPanel>
         <StackPanel>
             <GridView ItemsSource="{x:Bind words}">
