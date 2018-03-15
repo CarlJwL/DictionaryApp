@@ -100,6 +100,7 @@
       <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\NavMenuItem.cs" />
+    <Compile Include="Models\Weather.cs" />
     <Compile Include="Models\Word.cs" />
     <Compile Include="Pages\AppSettingPage.xaml.cs">
       <DependentUpon>AppSettingPage.xaml</DependentUpon>
