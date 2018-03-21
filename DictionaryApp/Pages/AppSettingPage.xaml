@@ -14,12 +14,12 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Center">
             <TextBlock Text="存储地址" />
             <Button FontFamily="Segoe MDL2 Assets"
                     Content="&#xE105;"
                     Name="ChooseSavingPathButton"
-                    Click="ChooseSavingPathButton_Click" Width="30"/>
+                    Click="ChooseSavingPathButton_Click"/>
             <TextBlock Name="FilePathTextBlock" />
         </StackPanel>
     </Grid>

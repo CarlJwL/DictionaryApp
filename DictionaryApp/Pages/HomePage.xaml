@@ -41,16 +41,10 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <StackPanel Name="DataInformationPanel"
-                    Grid.Row="0"
-                    Orientation="Horizontal">
-            <TextBlock Name="TimeTextBlock"
-                       FontFamily="Segoe MDL2 Assets"
-                       FontSize="30" />
-            <StackPanel Name="WeatherPanel">
-
-            </StackPanel>
-        </StackPanel>
+        <TextBlock Name="TimeTextBlock"
+                   Grid.Row="0"
+                   FontSize="30"
+                   HorizontalAlignment="Center" />
         <StackPanel Grid.Row="1">
             <GridView ItemsSource="{x:Bind words}">
                 <GridView.ItemTemplate>
